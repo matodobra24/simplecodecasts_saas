@@ -8,6 +8,8 @@ gem 'sqlite3', group: [:development, :test]
 
 #Use postgresql for database for post production
 
+gem 'bootstrap-sass', '3.3.1'
+#Use Bootstrap Library for Styles
 group :production do
     gem 'pg'
     gem 'rails_12factor'
