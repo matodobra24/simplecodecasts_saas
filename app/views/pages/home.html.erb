@@ -17,7 +17,7 @@
             
             </br>
             
-             <%= link_to "Sign Up With Basic!", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
+             <%= link_to "Sign Up With Basic!", new_user_registration_path(plan: @basic_plan.id), class: 'btn btn-primary btn-lg btn-block' %>
 
             
         </div>
@@ -32,7 +32,7 @@
             
             <h4>Sign Up For The Pro Account For $10/Month And Get Access To The Community & Contact Information!</h4>
             
-            <%= link_to "Sign Up With Pro!", new_user_registration_path, class: 'btn btn-success btn-lg btn-block' %>
+            <%= link_to "Sign Up With Pro!", new_user_registration_path(plan: @pro_plan.id), class: 'btn btn-success btn-lg btn-block' %>
             
         </div>
         
