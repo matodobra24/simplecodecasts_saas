@@ -1,8 +1,10 @@
 class Users::RegistrationsController < Devise::RegistrationsController
     
+    before_filter :select_plan, only: :new
+    
     def create
         
-        super new |resource|
+        super do |resource|
         
             if params[:plan]
         
@@ -18,9 +20,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
                         
                     end
             
-             end
+            end
         
         end
         
     end
     
+    private 
+    
+        def select_plan
+            
+            unless params[:plan] && (params[:plan] == '1' || params[:plan] == '2')
+                
+                flash[:notice] = "Please Select A Membership Plan To Sign Up"
+                
+                redirect_to root_url
+            end
+            
+        end
+  
+end  

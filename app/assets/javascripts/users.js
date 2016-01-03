@@ -18,21 +18,37 @@ $(document).ready(function() {
                 exp_month: expMonth,
                 exp_year: expYear
             }, stripeResponseHandler);
-        }
+        } 
         return false;
     }); // form submission
 
     function stripeResponseHandler(status, response) {
         // Get a reference to the form:
-        var f = $("#new_user");
+        var l = $("#pro_form");
+        
+        if (response.error) {
+            
+            console.log(response.error.message);
+            
+            $("input[type=submit]").prop("disabled", false);
+            
+            var errorBox = $("#alert");
+            
+            errorBox.addClass("alert alert-warning");
+            
+            errorBox.append('<p class="lead">' + response.error.message + '</p>');
+            
+        } else {
 
         // Get the token from the response:
         var token = response.id;
 
         // Add the token to the form:
-        f.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
-
+        l.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
+        
         // Submit the form:
-        f.get(0).submit();
+        l.get(0).submit();
+        
+        }
     }
 });

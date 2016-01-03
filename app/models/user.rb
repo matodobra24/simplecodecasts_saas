@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   
   attr_accessor :stripe_card_token
   
+  
   def save_with_payment
     
     if valid?
