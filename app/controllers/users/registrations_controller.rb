@@ -14,7 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
                         
                         resource.save_with_payment
                         
-                    else
+                    elsif resource.plan_id == 1
+                        
                         
                         resource.save
                         
