@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     function stripeResponseHandler(status, response) {
         // Get a reference to the form:
-        var l = $("#pro_plan");
+        var l = $("#pro_form");
         
         if (response.error) {
             
@@ -46,7 +46,7 @@ $(document).ready(function() {
         // Add the token to the form:
         l.append('<input type="hidden" name="user[stripe_card_token]" value="' + token + '" />');
         
-        // Submit the form:
+        // Submit the form :
         l.get(0).submit();
         
         }
