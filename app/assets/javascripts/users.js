@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     function stripeResponseHandler(status, response) {
         // Get a reference to the form:
-        var l = $(".new_form");
+        var l = $("#pro_plan");
         
         if (response.error) {
             
