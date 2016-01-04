@@ -34,6 +34,11 @@
         <ul class="nav navbar-nav navbar-left">
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Contact us", new_contact_path %></li>
+           <% if user_signed_in? %>
+           
+             <li><%= link_to "Community", users_path %></li>
+           
+           <% end %>
         </ul>
         
         
@@ -51,25 +56,36 @@
           
         </div>
         
-         <% if current_user.profile %>
+         <% if user_signed_in? %>
             <ul class = "nav navbar-nav navbar-right">
               
-              <li class="dropdown">
+              <li role="presentation" class="dropdown">
+                
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile <span class="caret"></span></a>
+               
                 <ul class="dropdown-menu text-center">
-                  <li><%= link_to "My Profile", user_path(current_user) %></li>
-                  <li role="separator" class="divider"></li>
-                  <li><%= link_to "Edit Profile", edit_user_profile_path(current_user) %> </li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Something Else?</a></li>
+                  
+                  <% if current_user.profile %>
+                    <li><%= link_to "My Profile", user_path(current_user) %></li>
+                    <li role="separator" class="divider"></li>
+                    <li><%= link_to "Edit Profile", edit_user_profile_path(current_user) %> </li>
+                    
+                  <% else %>
+                  
+                    <li><%= link_to "Create Profile", new_user_profile_path(current_user) %> </li>
+                  
+                  <% end %>
+                  <li><%= link_to "Edit Account", edit_user_registration_path %></li>
+                  
                 </ul>
               </li>
         
                
                
             </ul
+          <% else %>
              
-            <% end %>
+          <% end %>
       </div
     </div>
   </nav>
