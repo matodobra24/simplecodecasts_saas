@@ -1,14 +1,44 @@
-
-<%= @user.profile.first_name %> <%= @user.profile.last_name %> <br/>
-
-<%= @user.profile.job_title %> <br/>
-
-<% if current_user.plan_id == 2 %>
-
-    <%= @user.profile.phone_number %> <br/>
+<div clas="row">
     
-    <%= @user.profile.contact_email %> <br/>
+    <div class="col-md-3 text-center">
 
-<% end %>
+        
+    
+    </div>
+    
+    <div class="col-md-7">
+    
+        <h1 class="text-center"><%= image_tag @user.profile.avatar.url %> <%= @user.profile.first_name %> <%= @user.profile.last_name %></h1>
+        
+        <h3> <span class="job_title_icon text-center"> <%= job_title_icon %> </span> <%= @user.profile.job_title %></h3> 
+        
+        <div class="well profile-block profile-description">
+            
+            <h3>Description</h3>
+        
+            <p class="lead"> <%= @user.profile.description %> </p>
+            
+        </div>
+        
+         <% if current_user.plan_id == 2 %>
+         
+         <div class="well profile-block contact-info">
+             
+             <h3>Contact Information</h3>
+        
+            <p class="lead"> <%= @user.profile.phone_number %> </h5>
+            
+            <p class="lead"><%= @user.profile.contact_email %> </h5>
+            
+        </div>
+        
+        <% end %>
+    
+    </div>
+    
+    <div class="col-md-2">
+        
+        
+    </div>
 
-<%= @user.profile.description %> <br/>
+</div>

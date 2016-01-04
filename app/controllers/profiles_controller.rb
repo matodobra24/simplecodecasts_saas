@@ -46,7 +46,8 @@ class ProfilesController < ApplicationController
             redirect_to user_path( params[:user_id] )
 
         else
-            
+        
+            flash[:danger] = "There Was An Error Updating Your Form"
             render action: :edit
             
         end
@@ -56,14 +57,14 @@ class ProfilesController < ApplicationController
     
         def profile_params
             
-            params.require(:profile).permit(:first_name, :last_name, :description, :contact_email, :phone_number, :job_title)
+            params.require(:profile).permit(:first_name, :last_name, :avatar, :description, :contact_email, :phone_number, :job_title)
             
         end
         
         def only_current_user
             
-        @user = User.find( params[:user_id] )
-        redirect_to(root_url) unless  @user == current_user
+            @user = User.find( params[:user_id] )
+            redirect_to(root_url) unless  @user == current_user
             
         end
 end
